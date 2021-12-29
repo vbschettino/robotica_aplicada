@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- Start turtlesim and create a follower turtle. -->
+
+<launch>
+    <arg name="controlled_turtle" default="turtle_bota" />
+    <arg name="teleop" default="true" />
+
+    <!-- Start simulator with "turtle1" in it -->
+    <node pkg="turtlesim" type="turtlesim_node" name="turtlesim_node" output="screen" required="true" />
+
+    <!-- Spawn a second turtle -->
+    <node pkg="rosservice" type="rosservice" name="spawner" args="call --wait /spawn
+        '{name: $(arg controlled_turtle), x: 7, y: 2, theta: 0.7}'" />
+
+    <!-- Make second turtle follow "turtle1". Different controller types can be used -->
+    <node pkg="slide12" type="turtle_follower_non_holonomic_pose.py" name="turtle_follower">
+        <remap from="/turtle2/pose" to="/$(arg controlled_turtle)/pose" />
+        <remap from="/turtle2/cmd_vel" to="/$(arg controlled_turtle)/cmd_vel" />
+    </node>
+
+    <node if="$(arg teleop)" pkg="turtlesim" type="turtle_teleop_key" name="turtle_teleop_key" />
+</launch>
