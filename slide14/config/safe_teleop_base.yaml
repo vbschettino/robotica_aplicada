@@ -1,0 +1,31 @@
+# Adapted from turtlebot3_navigation/param/base_local_planner_params.yaml
+
+# Robot Configuration Parameters
+max_vel_x: 0.5
+min_vel_x: 0.15
+
+max_vel_theta:  1.0
+min_vel_theta: -1.0
+min_in_place_vel_theta: 1.0
+
+acc_lim_x: 2.5
+acc_lim_y: 0.0
+acc_lim_th: 3.2
+
+# Goal Tolerance Parameters
+xy_goal_tolerance: 0.10
+yaw_goal_tolerance: 0.05
+
+# Differential-drive robot configuration
+holonomic_robot: false
+
+# Forward Simulation Parameters
+vx_samples: 3
+vy_samples: 0
+vtheta_samples: 10
+sim_time: 5.0
+sim_granularity: 0.025
+
+# Weights
+user_bias: 0.9
+occdist_scale: 0.01

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- Start turtlebot simulation and safe teleoperation with DWA. -->
+
+<!-- Because turtlebot3 launch files require env variables to be set (why??),
+this needs to be launched like following:
+TURTLEBOT3_MODEL=burger roslaunch slide14 dwa.launch -->
+
+<launch>
+    <arg name="mouse_teleop" default="false" />
+    <arg name="rviz" default="true" />
+
+    <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_world.launch" />
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 0 0 0 map odom" />
+
+    <node pkg="safe_teleop_base" type="safe_teleop_base" name="safe_teleop_base" output="screen">
+        <rosparam file="$(find turtlebot3_navigation)/param/costmap_common_params_burger.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find turtlebot3_navigation)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find slide14)/config/safe_teleop_base.yaml" command="load" />
+        <remap from="/safe_teleop_base/safe_vel" to="/cmd_vel" />
+    </node>
+
+    <node if="$(arg mouse_teleop)" pkg="mouse_teleop" type="mouse_teleop.py" name="mouse_teleop">
+        <remap from="/mouse_vel" to="/base_velocity" />
+        <param name="frequency" value="10" />
+    </node>
+
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="rviz" args="-d $(find slide14)/config/visualization.rviz" />
+</launch>
