@@ -1,0 +1,39 @@
+# Parameters used by local path planner
+# Configuration adapted from turtlebot3_navigation
+# For help and default parameters see:
+# - http://wiki.ros.org/base_local_planner
+
+TrajectoryPlannerROS:
+    # Robot configuration
+    global_frame_id: odom
+    holonomic_robot: false
+    max_vel_x: 0.5
+    min_vel_x: 0.11
+    max_vel_theta: 2.75
+    min_vel_theta: -2.75
+    min_in_place_vel_theta: 0.2
+    acc_lim_x: 2.5
+    acc_lim_y: 0.0
+    acc_lim_theta: 3.2
+
+    # Forward simulation
+    dwa: true
+    sim_time: 1.5
+    sim_granularity: 0.1
+    vx_samples: 10
+    vtheta_samples: 10
+
+    # Trajectory scoring
+    meter_scoring: true
+    path_distance_bias: 0.6
+    goal_distance_bias: 0.8
+    occdist_scale: 0.01
+
+    # Goal tolerance
+    xy_goal_tolerance: 0.1
+    yaw_goal_tolerance: 0.1
+    latch_xy_goal_tolerance: true
+
+    # Recovery behaviors
+    escape_vel: -0.1
+    escape_reset_dist: 0.25

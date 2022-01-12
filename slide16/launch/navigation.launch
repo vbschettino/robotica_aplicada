@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!-- Start autonomous navigation for Turtlebot3 -->
+
+<launch>
+    <!-- Start localization -->
+    <include file="$(find slide16)/launch/slam_localization.launch">
+        <arg name="slam_mode" value="false" />
+        <arg name="mouse_teleop" value="false" />
+    </include>
+    <!-- Perfect fake localization could be achieved as below -->
+    <!-- <node pkg="map_server" type="map_server" name="map_server" args="$(find slide16)/maps/turtlebot3_world.yaml" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="fake_localization" args="0.0 0.0 0.0 0.0 0.0 0.0 /map /odom" /> -->
+
+    <!-- Start move_base (global and local cost maps and path planners) -->
+    <node pkg="move_base" type="move_base" name="move_base" clear_params="true" output="screen">
+        <!-- Top-level parameters -->
+        <rosparam command="load" file="$(find slide16)/config/move_base/move_base.yaml" />
+
+        <!-- Costmaps parameters -->
+        <rosparam ns="global_costmap" command="load" file="$(find slide16)/config/move_base/costmap_common.yaml" />
+        <rosparam command="load" file="$(find slide16)/config/move_base/costmap_global.yaml" />
+        <rosparam ns="local_costmap" command="load" file="$(find slide16)/config/move_base/costmap_common.yaml" />
+        <rosparam command="load" file="$(find slide16)/config/move_base/costmap_local.yaml" />
+
+        <!-- Planners parameters -->
+        <rosparam command="load" file="$(find slide16)/config/move_base/planner_global.yaml" />
+        <rosparam command="load" file="$(find slide16)/config/move_base/planner_local.yaml" />
+    </node>
+
+</launch>

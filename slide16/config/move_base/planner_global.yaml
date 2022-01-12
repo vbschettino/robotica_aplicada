@@ -1,0 +1,7 @@
+# Parameters used by global path planner
+# For help and default parameters see:
+# - http://wiki.ros.org/global_planner
+
+GlobalPlanner:
+    use_dijkstra: false  # use A* instead
+    use_grid_path: true  # otherwise A* fails

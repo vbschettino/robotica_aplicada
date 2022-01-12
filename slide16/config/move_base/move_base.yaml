@@ -1,0 +1,11 @@
+# Top-level parameters used by move_base
+# For help and default parameters see:
+# - http://wiki.ros.org/move_base
+
+planner_frequency: 0
+planner_patience: 15
+controller_frequency: 5
+controller_patience: 15
+clearing_rotation_allowed: false
+base_global_planner: global_planner/GlobalPlanner
+base_local_planner: base_local_planner/TrajectoryPlannerROS

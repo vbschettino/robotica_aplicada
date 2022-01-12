@@ -1,0 +1,18 @@
+# Parameters used only by global costmap - consider only on pre-built map
+# For help and default parameters see:
+# - http://wiki.ros.org/costmap_2d
+# - http://wiki.ros.org/costmap_2d/hydro/staticmap
+# - http://wiki.ros.org/costmap_2d/hydro/inflation
+
+global_costmap:
+    global_frame: map
+    update_frequency: 1.0
+    publish_frequency: 1.0
+
+    plugins:
+        - {name: static_layer, type: "costmap_2d::StaticLayer"}
+        - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+
+    inflation_layer:
+        inflation_radius: 0.5
+        cost_scaling_factor: 10

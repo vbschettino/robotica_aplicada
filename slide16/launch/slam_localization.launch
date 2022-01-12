@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!-- Start either SLAM or localization for Turtlebot3 -->
+
+<launch>
+    <arg name="slam_mode" default="true" />
+    <arg name="mouse_teleop" default="true" />
+
+    <!-- Start in either SLAM ... -->
+    <node if="$(arg slam_mode)" pkg="gmapping" type="slam_gmapping" name="slam_gmapping">
+        <!-- Define size and resolution of map (too big otherwise (4000x4000 px, 16Mb)) -->
+        <param name="xmin" value="-5"/>
+        <param name="xmax" value="5"/>
+        <param name="ymin" value="-5"/>
+        <param name="ymax" value="5"/>
+        <param name="delta" value="0.05"/>
+    </node>
+    <!-- When ready to save the map, run this in the command line:
+    rosrun map_server map_saver -f `rospack find slide16`/maps/turtlebot3_world
+    -->
+
+    <!-- ... or localization mode -->
+    <group unless="$(arg slam_mode)">
+        <node pkg="map_server" type="map_server" name="map_server" args="$(find slide16)/maps/turtlebot3_world.yaml" />
+
+        <node pkg="amcl" type="amcl" name="amcl">
+            <param name="transform_tolerance" value="0.2"/>
+        </node>
+    </group>
+
+    <node if="$(arg mouse_teleop)" pkg="mouse_teleop" type="mouse_teleop.py" name="mouse_teleop">
+        <remap from="/mouse_vel" to="/cmd_vel" />
+        <param name="frequency" value="10" />
+    </node>
+
+</launch>

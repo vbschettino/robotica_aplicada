@@ -1,0 +1,9 @@
+# Parameters used by both global and local costmaps
+# Adapted from turtlebot3_navigation
+# For help and default parameters see:
+# - http://wiki.ros.org/costmap_2d
+# - http://wiki.ros.org/costmap_2d/Tutorials/Configuring%20Layered%20Costmaps
+
+robot_base_frame: base_link
+footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
+# footprint_padding: 0.1
