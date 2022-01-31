@@ -8,10 +8,17 @@ project(slide16)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  turtlebot3
-  navigation
+  turtlebot3_gazebo
+  gazebo_ros
+  xacro
+  turtlebot3_description
+  robot_state_publisher
+  rviz
   gmapping
-  hector_mapping
+  map_server
+  amcl
+  mouse_teleop
+  move_base
 )
 
 ## System dependencies are found with CMake's conventions
