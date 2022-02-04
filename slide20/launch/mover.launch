@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+    <include file="$(find panda_moveit_config)/launch/demo.launch" />
+
+    <node pkg="slide20" type="moveit_commander_tutorial.py" name="moveit_commander_tutorial" />
+
+</launch>
