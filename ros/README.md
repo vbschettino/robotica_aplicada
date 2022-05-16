@@ -17,8 +17,8 @@ Exercícios sobre conceitos e o uso de ferramentas relacionadas ao ROS.
 - http://wiki.ros.org/roslaunch/XML
 - http://wiki.ros.org/Services
 - https://wiki.ros.org/Remapping%20Arguments
-- http://wiki.ros.org/turtlesim
 - http://wiki.ros.org/rospy
+- http://wiki.ros.org/turtlesim
 
 ## Tutoriais
 
