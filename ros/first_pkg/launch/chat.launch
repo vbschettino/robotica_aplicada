@@ -1,0 +1,16 @@
+<!-- Start "chatting" nodes. -->
+
+<launch>
+
+<arg name="num_echos" default="3"/>
+
+<node pkg="first_pkg" type="talker.py" name="talker"/>
+
+<node pkg="first_pkg" type="listener.py" name="listener" output="screen"/>
+
+<node pkg="first_pkg" type="echoer.py" name="echoer" output="screen">
+    <param name="num_echos" value="$(arg num_echos)"/>
+    <remap from="/echo_in" to="/greetings"/>
+</node>
+
+</launch>
