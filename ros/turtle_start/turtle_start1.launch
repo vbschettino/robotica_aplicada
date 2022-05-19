@@ -1,0 +1,9 @@
+<!-- Start turtlesim and keyboard teleoperation -->
+
+<launch>
+
+<node pkg="turtlesim" type="turtlesim_node" name="turtlesim"/>
+
+<node pkg="turtlesim" type="turtle_teleop_key" name="turtle_teleop_key" output="screen"/>
+
+</launch>

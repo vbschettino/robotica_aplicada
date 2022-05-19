@@ -1,0 +1,15 @@
+<!-- Start turtlesim and keyboard teleoperation -->
+
+<launch>
+
+<arg name="brightness" default="100"/>
+
+<node pkg="turtlesim" type="turtlesim_node" name="turtlesim" required="true">
+    <param name="background_r" value="0"/>
+    <param name="background_g" value="$(arg brightness)"/>
+    <param name="background_b" value="0"/>
+</node>
+
+<node pkg="turtlesim" type="turtle_teleop_key" name="turtle_teleop_key" output="screen"/>
+
+</launch>

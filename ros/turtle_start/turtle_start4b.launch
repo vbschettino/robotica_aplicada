@@ -1,0 +1,19 @@
+<!-- Start turtlesim and keyboard teleoperation -->
+
+<launch>
+
+<arg name="brightness" default="100"/>
+
+<node pkg="turtlesim" type="turtlesim_node" name="turtlesim" required="true">
+    <param name="background_r" value="0"/>
+    <param name="background_g" value="$(arg brightness)"/>
+    <param name="background_b" value="0"/>
+</node>
+
+<node pkg="turtlesim" type="turtle_teleop_key" name="turtle_teleop_key" output="screen">
+    <remap from="/turtle1/cmd_vel" to="/turtle_bota/cmd_vel"/>
+</node>
+
+<node pkg="rosservice" type="rosservice" name="turtle2_starter" args="call /spawn '{x: 2.0, y: 2.0, theta: 0.0, name: turtle_bota}'"/>
+
+</launch>
