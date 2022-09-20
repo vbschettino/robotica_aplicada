@@ -8,7 +8,7 @@ project(slide16)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  turtlebot3_gazebo
+  # turtlebot3_gazebo
   gazebo_ros
   xacro
   turtlebot3_description
