@@ -48,7 +48,7 @@ def main():
     move_group.set_max_velocity_scaling_factor(0.5)
     move_group.set_max_acceleration_scaling_factor(0.5)
     eef_link = move_group.get_end_effector_link()
-    touch_links = robot.get_link_names(group='hand')
+    touch_links = robot.get_link_names(group='panda_hand')
 
     # Create artificial scene for the robot
     rospy.sleep(1)  # wait for scene object to initialize
