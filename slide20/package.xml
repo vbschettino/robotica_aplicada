@@ -54,6 +54,7 @@
   <depend>tf</depend>
   <depend>geometry_msgs</depend>
   <depend>panda_moveit_config</depend>
+  <depend>franka_gazebo</depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

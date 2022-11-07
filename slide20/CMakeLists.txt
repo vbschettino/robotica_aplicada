@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   tf
   geometry_msgs
   panda_moveit_config
+  franka_gazebo
 )
 
 ## System dependencies are found with CMake's conventions

@@ -16,9 +16,8 @@ https://github.com/ros-planning/moveit_tutorials/blob/master/doc/move_group_pyth
 # http://docs.ros.org/en/noetic/api/moveit_commander/html/classmoveit__commander_1_1move__group_1_1MoveGroupCommander.html
 # https://python.hotexamples.com/examples/moveit_commander/MoveGroupCommander/pick/python-movegroupcommander-pick-method-examples.html
 # https://github.com/Aharobot/inmoov_ros/blob/master/robbie_moveit/nodes/get_beer.py
+# https://github.com/dabarov/moveit-pick-place-python/blob/main/scripts/main.py
 
-# TODO: integration with Gazebo
-# help here: https://ros-planning.github.io/moveit_tutorials/doc/gazebo_simulation/gazebo_simulation.html
 
 import sys
 import copy
@@ -59,7 +58,7 @@ def main():
 
     # Define initial and target poses of the object to be picked
     object_initial_pose = scene.get_object_poses(['can'])['can']
-    object_initial_pose.position.x -= 0.2  # offset, we just want near the object
+    object_initial_pose.position.x -= 0.2  # offset, just go near the object
     grasping_rpy = (0, -pi/2, pi)  # roll, pitch and yaw for grasping
     grasping_quaternion = tf.transformations.quaternion_from_euler(
         *grasping_rpy)
